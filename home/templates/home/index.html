@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{%block start%}
+<head>
+
+<title>{{page}}</title>
+
+</head>
+
+<body>
+
+<h1>THis is index Page</h1>
+
+
+<a href="/about/">
+    about
+
+</a>
+|
+
+<a href="/contact/">contact</a>
+
+
+<h1>Rendering</h1>
+
+{{peoples}}
+
+<style>
+    table, th, td {
+      border: 1px solid black;
+      
+    }
+
+    th, td{
+        width: 100px
+ 
+    }
+
+    .up{
+        background-color: green;
+    }
+
+    .down{
+        background-color: red;
+    }
+    </style>
+    
+    <table class="container">
+      <tr>
+        <th>S.no</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Can Vote OR Not</th>
+      </tr>
+      {% for people in peoples%}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{people.name}}</td>
+        <td>{{people.age}}</td>
+        <td>
+            {% if people.age >= 18 %}
+             <p class="up">👍</p>
+            {% else %}
+            <p class="down">👎</p>
+            {% endif %}
+        </td>
+      </tr>
+      
+      {% endfor%}
+    </table>
+  
+    {% endblock %}
